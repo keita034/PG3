@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include<list>
-#include<vector>
 int main()
 {
 	//駅番号
@@ -22,7 +21,6 @@ int main()
 		printf("JY%02d:%s\n", index,station);
 		index++;
 	}
-	printf("\n");
 
 	//日暮里の前に西日暮里を追加
 	for (std::list<const char*>::iterator itr = yamanoteLine.begin(); itr != yamanoteLine.end(); ++itr)
@@ -37,13 +35,12 @@ int main()
 
 	//一覧を表示
 	index = 1;
-	printf("2019年当時の山手線駅一覧(英語名)\n");
+	printf("\n2019年当時の山手線駅一覧(英語名)\n");
 	for (const char* station : yamanoteLine)
 	{
 		printf("JY%02d:%s\n", index, station);
 		index++;
 	}
-	printf("\n");
 
 	//品川の前に高輪ゲートウェイを追加
 	for (std::list<const char*>::iterator itr = yamanoteLine.begin(); itr != yamanoteLine.end(); ++itr)
@@ -58,7 +55,7 @@ int main()
 
 	//一覧を表示
 	index = 1;
-	printf("2022年当時の山手線駅一覧(英語名)\n");
+	printf("\n2022年当時の山手線駅一覧(英語名)\n");
 	for (const char* station : yamanoteLine)
 	{
 		printf("JY%02d:%s\n", index, station);
