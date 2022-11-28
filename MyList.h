@@ -222,28 +222,22 @@ public:
 			for (int j = (size - 1); j > i; j--)
 			{
 				tmpCell2 = GetCell(j);
-
-				if (tmpCell2->prev->value != NULL)
+				if (flag)
 				{
-
-
-					if (flag)
+					if (tmpCell2->value < tmpCell2->prev->value)
 					{
-						if (tmpCell2->value < tmpCell2->prev->value)
-						{
-							T value = tmpCell2->value;
-							ChangeValue(tmpCell2->prev->value, j);
-							ChangeValue(value, j - 1);
-						}
+						T value = tmpCell2->value;
+						ChangeValue(tmpCell2->prev->value, j);
+						ChangeValue(value, j - 1);
 					}
-					else
+				}
+				else
+				{
+					if (tmpCell2->value > tmpCell2->prev->value)
 					{
-						if (tmpCell2->value > tmpCell2->prev->value)
-						{
-							T value = tmpCell2->value;
-							ChangeValue(tmpCell2->prev->value, j);
-							ChangeValue(value, j - 1);
-						}
+						T value = tmpCell2->value;
+						ChangeValue(tmpCell2->prev->value, j);
+						ChangeValue(value, j - 1);
 					}
 				}
 			}

@@ -28,15 +28,15 @@ public:
 
 int main()
 {
-	Mylist<int> list;
+	Mylist<std::string> list;
 
 	t m = { 1,2 };
 
-	list.PushBack(5);
-	list.PushBack(4);
-	list.PushBack(3);
-	list.PushBack(2);
-	list.PushBack(1);
+	list.PushBack("5");
+	list.PushBack("4");
+	list.PushBack("3");
+	list.PushBack("2");
+	list.PushBack("1");
 
 
 	list.Dump();
