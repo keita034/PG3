@@ -110,7 +110,6 @@ public:
 		tmpCell->value = value_;
 
 		return true;
-
 	}
 
 	/// <summary>
