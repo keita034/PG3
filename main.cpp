@@ -1,7 +1,6 @@
-#include <stdio.h>
+#include <iostream>
 #include"MyList.h"
-#include<list>
-#include<algorithm>
+#include<string>
 
 template<typename T>
 void Display(Mylist<T>& list, int& operationNum, int& displayOperationNum);
@@ -9,8 +8,14 @@ void Display(Mylist<T>& list, int& operationNum, int& displayOperationNum);
 template<typename T>
 void Insert(Mylist<T>& list, int& operationNum);
 
+template<>
+void Insert(Mylist<char*>& list, int& operationNum);
+
 template<typename T>
 void Edit(Mylist<T>& list, int& operationNum);
+
+template<>
+void Edit(Mylist<char*>& list, int& operationNum);
 
 template<typename T>
 void Delete(Mylist<T>& list, int& operationNum);
@@ -18,19 +23,9 @@ void Delete(Mylist<T>& list, int& operationNum);
 template<typename T>
 void Change(Mylist<T>& list, int& operationNum);
 
-class t
-{
-public:
-
-	int r;
-	int y;
-};
-
 int main()
 {
-	Mylist<std::string> list;
-
-	t m = { 1,2 };
+	Mylist<char*> list;
 
 	list.PushBack("5");
 	list.PushBack("4");
@@ -223,6 +218,60 @@ void Insert(Mylist<T>& list, int& operationNum)
 	}
 }
 
+template<>
+void Insert(Mylist<char*>& list, int& operationNum)
+{
+	std::cout << "[ƒŠƒXƒg—v‘f‚Ì‘}“ü]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "—v‘f‚ð’Ç‰ÁêŠ‚ðŽw’è‚µ‚Ä‚­‚¾‚³‚¢BÅŒã”ö‚É’Ç‰Á‚·‚éê‡‚Í‰½‚à“ü—Í‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B" << std::endl;
+
+	std::string insertNum;
+	while (std::getchar() != '\n');
+
+	std::getline(std::cin, insertNum);
+
+	if (insertNum == "")
+	{
+		std::cout << "’Ç‰Á‚·‚é—v‘f‚Ì’l‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
+		char element[64];
+
+		std::cin >> element;
+
+		list.PushBack(element);
+
+		std::cout << "—v‘f" << element << "‚ª" << "ÅŒã”ö‚É‘}“ü‚³‚ê‚Ü‚µ‚½" << std::endl;
+	}
+	else
+	{
+		int index = std::atoi(insertNum.c_str());
+
+		std::cout << "’Ç‰Á‚·‚é—v‘f‚Ì’l‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
+		char element[64];
+
+		std::cin >> element;
+
+		list.Insert(element, index);
+
+		std::cout << "—v‘f" << element << "‚ª" << index << "”Ô–Ú‚É‘}“ü‚³‚ê‚Ü‚µ‚½" << std::endl;
+	}
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------" << std::endl;
+	std::cout << "9.—v‘f‘€ì‚É–ß‚é" << std::endl;
+
+	std::cin >> operationNum;
+	system("cls");
+
+	if (operationNum == 9)
+	{
+		operationNum = 0;
+	}
+	else
+	{
+		operationNum = 2;
+	}
+}
+
 template<typename T>
 void Edit(Mylist<T>& list, int& operationNum)
 {
@@ -239,6 +288,53 @@ void Edit(Mylist<T>& list, int& operationNum)
 		std::cout << elementNum << "”Ô–Ú‚Ì—v‘f‚Ì•ÏX‚·‚é’l‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B" << std::endl;
 
 		T changeElement{};
+		std::cin >> changeElement;
+
+		list.ChangeValue(changeElement, elementNum);
+		std::cout << std::endl;
+
+		std::cout << elementNum << "”Ô–Ú‚Ì—v‘f‚Ì’l‚ª" << '"' << changeElement << '"' << "‚É•ÏX‚³‚ê‚Ü‚µ‚½" << std::endl;
+	}
+	else
+	{
+		std::cout << elementNum << "”Ô–Ú‚Ì—v‘f‚Ì‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B" << std::endl;
+	}
+
+
+	std::cout << std::endl;
+	std::cout << "----------------------------------" << std::endl;
+	std::cout << "9.—v‘f‘€ì‚É–ß‚é" << std::endl;
+
+	std::cin >> operationNum;
+	system("cls");
+
+	if (operationNum == 9)
+	{
+		operationNum = 0;
+	}
+	else
+	{
+		operationNum = 3;
+	}
+
+}
+
+template<>
+void Edit(Mylist<char*>& list, int& operationNum)
+{
+	std::cout << "[—v‘f‚Ì•ÒW]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "•ÒW‚µ‚½‚¢—v‘f‚Ì”Ô†‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
+
+	int elementNum;
+	std::cin >> elementNum;
+	std::cout << std::endl;
+
+	if (list.Search(elementNum))
+	{
+		std::cout << elementNum << "”Ô–Ú‚Ì—v‘f‚Ì•ÏX‚·‚é’l‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B" << std::endl;
+
+		char changeElement[64];
 		std::cin >> changeElement;
 
 		list.ChangeValue(changeElement, elementNum);
