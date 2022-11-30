@@ -245,14 +245,21 @@ void Insert(Mylist<char*>& list, int& operationNum)
 	{
 		int index = std::atoi(insertNum.c_str());
 
-		std::cout << "’Ç‰Á‚·‚é—v‘f‚Ì’l‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
-		char element[64];
+		if (list.Search(index))
+		{
+			std::cout << "’Ç‰Á‚·‚é—v‘f‚Ì’l‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
+			char element[64];
 
-		std::cin >> element;
+			std::cin >> element;
 
-		list.Insert(element, index);
+			list.Insert(element, index);
 
-		std::cout << "—v‘f" << element << "‚ª" << index << "”Ô–Ú‚É‘}“ü‚³‚ê‚Ü‚µ‚½" << std::endl;
+			std::cout << "—v‘f" << element << "‚ª" << index << "”Ô–Ú‚É‘}“ü‚³‚ê‚Ü‚µ‚½" << std::endl;
+		}
+		else
+		{
+			std::cout << index << "”Ô–Ú‚Ì—v‘f‚Ì‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B" << std::endl;
+		}
 	}
 
 	std::cout << std::endl;

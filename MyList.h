@@ -99,7 +99,7 @@ public:
 	bool ChangeValue(T value_, int num)
 	{
 
-		if (Search(num))
+		if (!Search(num))
 		{
 			return false;
 		}
@@ -165,7 +165,7 @@ public:
 	//”CˆÓ‚Ì—v‘f‚Ìíœ
 	bool Delete(int num)
 	{
-		if (Search(num))
+		if (!Search(num))
 		{
 			return false;
 		}
@@ -205,18 +205,18 @@ public:
 				{
 					if (tmpCell2->value < tmpCell2->prev->value)
 					{
-						T value = tmpCell2->value;
+						T element = tmpCell2->value;
 						ChangeValue(tmpCell2->prev->value, j);
-						ChangeValue(value, j - 1);
+						ChangeValue(element, j - 1);
 					}
 				}
 				else
 				{
 					if (tmpCell2->value > tmpCell2->prev->value)
 					{
-						T value = tmpCell2->value;
+						T element = tmpCell2->value;
 						ChangeValue(tmpCell2->prev->value, j);
-						ChangeValue(value, j - 1);
+						ChangeValue(element, j - 1);
 					}
 				}
 			}
@@ -350,7 +350,7 @@ public:
 	bool ChangeValue(const char* value_, int num)
 	{
 
-		if (Search(num))
+		if (!Search(num))
 		{
 			return false;
 		}
@@ -414,7 +414,7 @@ public:
 	//”CˆÓ‚Ì—v‘f‚Ìíœ
 	bool Delete(int num)
 	{
-		if (Search(num))
+		if (!Search(num))
 		{
 			return false;
 		}
@@ -453,22 +453,22 @@ public:
 				{
 					if (*tmpCell2->value < *tmpCell2->prev->value)
 					{
-						char value[64];
-						strcpy_s(value, 64, tmpCell2->value);
+						char element[64];
+						strcpy_s(element, 64, tmpCell2->value);
 
 						ChangeValue(tmpCell2->prev->value, j);
-						ChangeValue(value, j - 1);
+						ChangeValue(element, j - 1);
 					}
 				}
 				else
 				{
 					if (*tmpCell2->value > *tmpCell2->prev->value)
 					{
-						char value[64];
-						strcpy_s(value, 64, tmpCell2->value);
+						char element[64];
+						strcpy_s(element, 64, tmpCell2->value);
 
 						ChangeValue(tmpCell2->prev->value, j);
-						ChangeValue(value, j - 1);
+						ChangeValue(element, j - 1);
 					}
 				}
 			}
