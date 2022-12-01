@@ -43,7 +43,7 @@ public:
 
 	~Mylist()
 	{
-		for (int i = size; i > 0 ; i--)
+		for (int i = size; i != -1; i--)
 		{
 			Delete(i);
 		}

@@ -27,9 +27,6 @@ int main()
 {
 	Mylist<char*> list;
 
-	list.PushBack("ba");
-	list.PushBack("ap");
-	list.PushBack("or");
 	//—v‘f‚Ì‘€ì‚Ì‘€ì”Ô†
 	int operationNum = 0;
 
