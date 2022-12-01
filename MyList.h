@@ -73,6 +73,7 @@ public:
 	template<typename T>
 	void Insert(T value_, int num)
 	{
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
 		Cell<T>* tmpCell = GetCell(--num);
 
 		//’Ç‰Á
@@ -82,7 +83,7 @@ public:
 	//”CˆÓ‚ÌêŠ‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©
 	bool Search(int num)
 	{
-		if (num < 0 || num>size)
+		if (num < 0 || num>=size)
 		{
 			return false;
 		}
@@ -104,6 +105,7 @@ public:
 			return false;
 		}
 
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
 		Cell<T>* tmpCell = GetCell(num);
 
 		//•ÏX
@@ -139,18 +141,20 @@ public:
 	/// </summary>
 	void SpecifyElement(int num)
 	{
-		Cell<T>* tmpCell = GetCell(num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<T>* cell = GetCell(num);
 
-		std::cout << num << ':' << tmpCell->value << '\n';
+		std::cout << num << ':' << cell->value << '\n';
 	}
 
 	//”CˆÓ‚Ì—v‘f‚Ìæ“¾
 	template<typename T>
 	T GetElement(int num)
 	{
-		Cell<T>* tmpCell = GetCell(num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<T>* cell = GetCell(num);
 
-		return tmpCell->value;
+		return cell->value;
 	}
 
 	/// <summary>
@@ -169,12 +173,13 @@ public:
 			return false;
 		}
 
-		Cell<T>* tmpCell = GetCell(num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<T>* cell = GetCell(num);
 
-		tmpCell->prev->next = tmpCell->next;
-		tmpCell->next->prev = tmpCell->next;
+		cell->prev->next = cell->next;
+		cell->next->prev = cell->next;
 
-		delete tmpCell;
+		delete cell;
 
 		size--;
 
@@ -189,32 +194,31 @@ public:
 	template<typename T>
 	void Sort(bool flag = true)
 	{
-		Cell<T>* tmpCell = nullptr;
-
-		Cell<T>* tmpCell2 = nullptr;
+		Cell<T>* cell = nullptr;
 
 		for (int i = 0; i < (size - 1); i++)
 		{
-			tmpCell = GetCell(i);
 
 			for (int j = (size - 1); j > i; j--)
 			{
-				tmpCell2 = GetCell(j);
+				//”CˆÓ‚ÌêŠ‚ğæ“¾
+				cell = GetCell(j);
+				
 				if (flag)
 				{
-					if (tmpCell2->value < tmpCell2->prev->value)
+					if (cell->value < cell->prev->value)
 					{
-						T element = tmpCell2->value;
-						ChangeValue(tmpCell2->prev->value, j);
+						T element = cell->value;
+						ChangeValue(cell->prev->value, j);
 						ChangeValue(element, j - 1);
 					}
 				}
 				else
 				{
-					if (tmpCell2->value > tmpCell2->prev->value)
+					if (cell->value > cell->prev->value)
 					{
-						T element = tmpCell2->value;
-						ChangeValue(tmpCell2->prev->value, j);
+						T element = cell->value;
+						ChangeValue(cell->prev->value, j);
 						ChangeValue(element, j - 1);
 					}
 				}
@@ -243,15 +247,14 @@ private:
 	//”CˆÓ‚ÌƒZƒ‹‚ğæ“¾
 	Cell<T>* GetCell(int num)
 	{
-		Cell<T>* tmpCell = dummy;
+		Cell<T>* cell = dummy;
 
-		//”CˆÓ‚ÌêŠ‚Ü‚ÅˆÚ“®
 		for (int i = 0; i < num + 1; i++)
 		{
-			tmpCell = tmpCell->next;
+			cell = cell->next;
 		}
 
-		return tmpCell;
+		return cell;
 	}
 };
 
@@ -297,7 +300,7 @@ public:
 
 	~Mylist()
 	{
-		//Clear();
+
 	}
 
 	//ˆê”Ô‘O‚É’Ç‰Á
@@ -324,16 +327,17 @@ public:
 	/// <param name="num">’Ç‰Á‚·‚éêŠ(0~)</param>
 	void Insert(const char* value_, int num)
 	{
-		Cell<char*>* tmpCell = GetCell(--num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<char*>* cell = GetCell(--num);
 
 		//’Ç‰Á
-		Add(value_, tmpCell);
+		Add(value_, cell);
 	}
 
 	//”CˆÓ‚ÌêŠ‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©
 	bool Search(int num)
 	{
-		if (num < 0 || num>size)
+		if (num < 0 || num>=size)
 		{
 			return false;
 		}
@@ -354,10 +358,11 @@ public:
 			return false;
 		}
 
-		Cell<char*>* tmpCell = GetCell(num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<char*>* cell = GetCell(num);
 
 		//•ÏX
-		strcpy_s(tmpCell->value, 64, value_);
+		strcpy_s(cell->value, 64, value_);
 
 		return true;
 
@@ -389,17 +394,19 @@ public:
 	/// </summary>
 	void SpecifyElement(int num)
 	{
-		Cell<char*>* tmpCell = GetCell(num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<char*>* cell = GetCell(num);
 
-		std::cout << num << ':' << tmpCell->value << '\n';
+		std::cout << num << ':' << cell->value << '\n';
 	}
 
 	//”CˆÓ‚Ì—v‘f‚Ìæ“¾
 	char* GetElement(int num)
 	{
-		Cell<char*>* tmpCell = GetCell(num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<char*>* cell = GetCell(num);
 
-		return tmpCell->value;
+		return cell->value;
 	}
 
 	/// <summary>
@@ -418,12 +425,13 @@ public:
 			return false;
 		}
 
-		Cell<char*>* tmpCell = GetCell(num);
+		//”CˆÓ‚ÌêŠ‚ğæ“¾
+		Cell<char*>* cell = GetCell(num);
 
-		tmpCell->prev->next = tmpCell->next;
-		tmpCell->next->prev = tmpCell->next;
+		cell->prev->next = cell->next;
+		cell->next->prev = cell->next;
 
-		delete tmpCell;
+		delete cell;
 
 		size--;
 
@@ -437,36 +445,34 @@ public:
 	/// <returns></returns>
 	void Sort(bool flag = true)
 	{
-		Cell<char*>* tmpCell = nullptr;
-
-		Cell<char*>* tmpCell2 = nullptr;
+		Cell<char*>* cell = nullptr;
 
 		for (int i = 0; i < (size - 1); i++)
 		{
-			tmpCell = GetCell(i);
-
 			for (int j = (size - 1); j > i; j--)
 			{
-				tmpCell2 = GetCell(j);
+				//”CˆÓ‚ÌêŠ‚ğæ“¾
+				cell = GetCell(j);
+
 				if (flag)
 				{
-					if (*tmpCell2->value < *tmpCell2->prev->value)
+					if (*cell->value < *cell->prev->value)
 					{
 						char element[64];
-						strcpy_s(element, 64, tmpCell2->value);
+						strcpy_s(element, 64, cell->value);
 
-						ChangeValue(tmpCell2->prev->value, j);
+						ChangeValue(cell->prev->value, j);
 						ChangeValue(element, j - 1);
 					}
 				}
 				else
 				{
-					if (*tmpCell2->value > *tmpCell2->prev->value)
+					if (*cell->value > *cell->prev->value)
 					{
 						char element[64];
-						strcpy_s(element, 64, tmpCell2->value);
+						strcpy_s(element, 64, cell->value);
 
-						ChangeValue(tmpCell2->prev->value, j);
+						ChangeValue(cell->prev->value, j);
 						ChangeValue(element, j - 1);
 					}
 				}
@@ -495,14 +501,14 @@ private:
 	//”CˆÓ‚ÌƒZƒ‹‚ğæ“¾
 	Cell<char*>* GetCell(int num)
 	{
-		Cell<char*>* tmpCell = dummy;
+		Cell<char*>* cell = dummy;
 
-		//”CˆÓ‚ÌêŠ‚Ü‚ÅˆÚ“®
+		
 		for (int i = 0; i < num + 1; i++)
 		{
-			tmpCell = tmpCell->next;
+			cell = cell->next;
 		}
 
-		return tmpCell;
+		return cell;
 	}
 };

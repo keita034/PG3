@@ -27,15 +27,9 @@ int main()
 {
 	Mylist<char*> list;
 
-	list.PushBack("5");
-	list.PushBack("4");
-	list.PushBack("3");
-	list.PushBack("2");
-	list.PushBack("1");
-
-
-	list.Dump();
-
+	list.PushBack("ba");
+	list.PushBack("ap");
+	list.PushBack("or");
 	//要素の操作の操作番号
 	int operationNum = 0;
 
@@ -113,23 +107,46 @@ void Display(Mylist<T>& list, int& operationNum, int& displayOperationNum)
 	case 1:
 		std::cout << "[要素の一覧表示]" << std::endl;
 
-		//一覧表示
-		list.Dump();
+		if (list.Size() != 0)
+		{
+			//一覧表示
+			list.Dump();
 
-		std::cout << "要素数:" << list.Size() << std::endl;
+			std::cout << "要素数:" << list.Size() << std::endl;
+		}
+		else
+		{
+			std::cout << "要素が存在しません" << std::endl;
+		}
 
 		break;
 	case 2:
 		std::cout << "[順番を指定して要素を表示]" << std::endl;
-		std::cout << "表示したい要素の順番を指定してください。" << std::endl;
 
-		//指定する番号を取得
-		int specifyNum;
-		std::cin >> specifyNum;
-		std::cout << std::endl;
+		if (list.Size() != 0)
+		{
+			std::cout << "表示したい要素の順番を指定してください。" << std::endl;
 
-		//指定して表示
-		list.SpecifyElement(specifyNum);
+			//指定する番号を取得
+			int specifyNum;
+			std::cin >> specifyNum;
+			std::cout << std::endl;
+
+			if (list.Search(specifyNum))
+			{
+				//指定して表示
+				list.SpecifyElement(specifyNum);
+			}
+			else
+			{
+				std::cout << specifyNum << "番目の要素が見つかりませんでした。" << std::endl;
+			}
+
+		}
+		else
+		{
+			std::cout << "要素が存在しません" << std::endl;
+		}
 
 		break;
 
@@ -159,6 +176,7 @@ void Display(Mylist<T>& list, int& operationNum, int& displayOperationNum)
 			operationNum = 0;
 			break;
 		default:
+			operationNum = 1;
 			break;
 		}
 	}
@@ -189,31 +207,43 @@ void Insert(Mylist<T>& list, int& operationNum)
 	}
 	else
 	{
+		//指定する番号を取得
 		int index = std::atoi(insertNum.c_str());
 
-		std::cout << "追加する要素の値を入力してください" << std::endl;
-		T element{};
+		if (list.Search(index))
+		{
+			std::cout << "追加する要素の値を入力してください" << std::endl;
+			T element{};
 
-		std::cin >> element;
+			std::cin >> element;
 
-		list.Insert(element, index);
+			list.Insert(element, index);
 
-		std::cout << "要素" << element << "が" << index << "番目に挿入されました" << std::endl;
+			std::cout << "要素" << element << "が" << index << "番目に挿入されました" << std::endl;
+		}
+		else
+		{
+			std::cout << index << "番目の要素が見つかりませんでした。" << std::endl;
+		}
+
 	}
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << "9.要素操作に戻る" << std::endl;
 
+	//操作番号を取得
 	std::cin >> operationNum;
 	system("cls");
 
 	if (operationNum == 9)
 	{
+		//要素の操作に戻る
 		operationNum = 0;
 	}
 	else
 	{
+		//ここに戻る
 		operationNum = 2;
 	}
 }
@@ -243,6 +273,7 @@ void Insert(Mylist<char*>& list, int& operationNum)
 	}
 	else
 	{
+		//指定する番号を取得
 		int index = std::atoi(insertNum.c_str());
 
 		if (list.Search(index))
@@ -258,7 +289,7 @@ void Insert(Mylist<char*>& list, int& operationNum)
 		}
 		else
 		{
-			std::cout << index << "番目の要素のが見つかりませんでした。" << std::endl;
+			std::cout << index << "番目の要素が見つかりませんでした。" << std::endl;
 		}
 	}
 
@@ -266,15 +297,18 @@ void Insert(Mylist<char*>& list, int& operationNum)
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << "9.要素操作に戻る" << std::endl;
 
+	//操作番号を取得
 	std::cin >> operationNum;
 	system("cls");
 
 	if (operationNum == 9)
 	{
+		//要素の操作に戻る
 		operationNum = 0;
 	}
 	else
 	{
+		//ここに戻る
 		operationNum = 2;
 	}
 }
@@ -286,6 +320,7 @@ void Edit(Mylist<T>& list, int& operationNum)
 	std::cout << std::endl;
 	std::cout << "編集したい要素の番号を入力してください" << std::endl;
 
+	//指定する番号を取得
 	int elementNum;
 	std::cin >> elementNum;
 	std::cout << std::endl;
@@ -304,7 +339,7 @@ void Edit(Mylist<T>& list, int& operationNum)
 	}
 	else
 	{
-		std::cout << elementNum << "番目の要素のが見つかりませんでした。" << std::endl;
+		std::cout << elementNum << "番目の要素が見つかりませんでした。" << std::endl;
 	}
 
 
@@ -312,15 +347,18 @@ void Edit(Mylist<T>& list, int& operationNum)
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << "9.要素操作に戻る" << std::endl;
 
+	//操作番号を取得
 	std::cin >> operationNum;
 	system("cls");
 
 	if (operationNum == 9)
 	{
+		//要素の操作に戻る
 		operationNum = 0;
 	}
 	else
 	{
+		//ここに戻る
 		operationNum = 3;
 	}
 
@@ -333,6 +371,7 @@ void Edit(Mylist<char*>& list, int& operationNum)
 	std::cout << std::endl;
 	std::cout << "編集したい要素の番号を入力してください" << std::endl;
 
+	//指定する番号を取得
 	int elementNum;
 	std::cin >> elementNum;
 	std::cout << std::endl;
@@ -351,7 +390,7 @@ void Edit(Mylist<char*>& list, int& operationNum)
 	}
 	else
 	{
-		std::cout << elementNum << "番目の要素のが見つかりませんでした。" << std::endl;
+		std::cout << elementNum << "番目の要素が見つかりませんでした。" << std::endl;
 	}
 
 
@@ -359,15 +398,18 @@ void Edit(Mylist<char*>& list, int& operationNum)
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << "9.要素操作に戻る" << std::endl;
 
+	//操作番号を取得
 	std::cin >> operationNum;
 	system("cls");
 
 	if (operationNum == 9)
 	{
+		//要素の操作に戻る
 		operationNum = 0;
 	}
 	else
 	{
+		//ここに戻る
 		operationNum = 3;
 	}
 
@@ -380,6 +422,7 @@ void Delete(Mylist<T>& list, int& operationNum)
 	std::cout << std::endl;
 	std::cout << "削除したい要素の番号を指定してください" << std::endl;
 
+	//指定する番号を取得
 	int elementNum;
 	std::cin >> elementNum;
 	std::cout << std::endl;
@@ -394,22 +437,25 @@ void Delete(Mylist<T>& list, int& operationNum)
 	}
 	else
 	{
-		std::cout << elementNum << "番目の要素のが見つかりませんでした。" << std::endl;
+		std::cout << elementNum << "番目の要素が見つかりませんでした。" << std::endl;
 	}
 
 	std::cout << std::endl;
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << "9.要素操作に戻る" << std::endl;
 
+	//操作番号を取得
 	std::cin >> operationNum;
 	system("cls");
 
 	if (operationNum == 9)
 	{
+		//要素の操作に戻る
 		operationNum = 0;
 	}
 	else
 	{
+		//ここに戻る
 		operationNum = 4;
 	}
 }
@@ -429,14 +475,13 @@ void Change(Mylist<T>& list, int& operationNum)
 
 	switch (changeOperationNum)
 	{
-	case 1:
+	case 1:	//昇順
 	{
-
 		list.Sort();
 		std::cout << "リストの要素を昇順で並び替えました" << std::endl;
 	}
 		break;
-	case 2:
+	case 2://降順
 		list.Sort(false);
 		std::cout << "リストの要素を降順で並び替えました" << std::endl;
 
@@ -449,15 +494,18 @@ void Change(Mylist<T>& list, int& operationNum)
 	std::cout << "----------------------------------" << std::endl;
 	std::cout << "9.要素操作に戻る" << std::endl;
 
+	//操作番号を取得
 	std::cin >> operationNum;
 	system("cls");
 
 	if (operationNum == 9)
 	{
+		//要素の操作に戻る
 		operationNum = 0;
 	}
 	else
 	{
+		//ここに戻る
 		operationNum = 5;
 	}
 }
