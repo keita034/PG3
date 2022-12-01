@@ -43,7 +43,10 @@ public:
 
 	~Mylist()
 	{
-		//Clear();
+		for (int i = size; i > 0 ; i--)
+		{
+			Delete(i);
+		}
 	}
 
 	//ˆê”Ô‘O‚É’Ç‰Á
@@ -300,7 +303,10 @@ public:
 
 	~Mylist()
 	{
-
+		for (int i = size; i != -1; i--)
+		{
+			Delete(i);
+		}
 	}
 
 	//ˆê”Ô‘O‚É’Ç‰Á
