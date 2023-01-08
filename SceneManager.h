@@ -1,4 +1,13 @@
 #pragma once
+
+enum SceneNum
+{
+	TITLE,
+	NEWGAME,
+	GAMEPLAY,
+	GAMECLEAR
+};
+
 class SceneManager final
 {
 public:
