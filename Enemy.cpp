@@ -11,7 +11,7 @@ void Enemy::Init()
 
 void Enemy::Updata()
 {
-		Kill();
+	Kill();
 }
 
 void Enemy::Draw()
