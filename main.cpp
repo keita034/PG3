@@ -13,7 +13,7 @@ int main()
 
 	printf("“G‚Ì”‚Í%d‘Ì\n", enemyNum);
 	printf("\n");
-	
+
 	//“G‚Ì¶¬
 	for (int i = 0; i < enemyNum; i++)
 	{
@@ -25,22 +25,27 @@ int main()
 	}
 	printf("\n");
 
-	//“G‚Ìó‘Ô•\¦
-	for (std::unique_ptr<Enemy >& enemy : enemys)
-	{
-		enemy->Draw();
-	}
-	printf("\n");
-
-	//“G‚ğEŠQ
-	enemys[0]->Updata();
-	printf("\n");
 
 	//“G‚Ìó‘Ô•\¦
 	for (std::unique_ptr<Enemy >& enemy : enemys)
 	{
-		enemy->Draw();
+		enemy->Updata();
 	}
+	printf("\n");
+
+	//“G‚Ìó‘Ô•\¦
+	for (std::unique_ptr<Enemy >& enemy : enemys)
+	{
+		enemy->Updata();
+	}
+	printf("\n");
+
+	//“G‚Ìó‘Ô•\¦
+	for (std::unique_ptr<Enemy >& enemy : enemys)
+	{
+		enemy->Updata();
+	}
+	printf("\n");
 
 	enemys.clear();
 
