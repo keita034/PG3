@@ -2,52 +2,30 @@
 #include <stdlib.h>
 #include<memory>
 #include<vector>
-#include"Enemy.h"
+#include"IShape.h"
+#include"Rectangle.h"
+#include"Circle.h"
+
 
 int main()
 {
 
-	std::vector<std::unique_ptr<Enemy>>enemys;
+	std::vector<std::unique_ptr<IShape>>shapes;
 
-	int enemyNum = 5;
+	shapes.push_back(std::move(std::make_unique<Circle>(5.0f)));
 
-	printf("“G‚Ì”‚Í%d‘Ì\n", enemyNum);
-	printf("\n");
+	shapes.push_back(std::move(std::make_unique<Rectangle>(10.f, 20.f)));
 
-	//“G‚Ì¶¬
-	for (int i = 0; i < enemyNum; i++)
+	for (std::unique_ptr<IShape>&shape : shapes)
 	{
-		std::unique_ptr<Enemy> enemy;
-		enemy = std::make_unique<Enemy>();
-		enemy->Init();
-
-		enemys.push_back(std::move(enemy));
+		printf("}Œ`‚Ì–ÊÏ%f\n", shape->GetSize());
 	}
 	printf("\n");
 
-
-	//“G‚Ìó‘Ô•\¦
-	for (std::unique_ptr<Enemy >& enemy : enemys)
+	for (std::unique_ptr<IShape>& shape : shapes)
 	{
-		enemy->Updata();
+		shape->Draw();
 	}
-	printf("\n");
-
-	//“G‚Ìó‘Ô•\¦
-	for (std::unique_ptr<Enemy >& enemy : enemys)
-	{
-		enemy->Updata();
-	}
-	printf("\n");
-
-	//“G‚Ìó‘Ô•\¦
-	for (std::unique_ptr<Enemy >& enemy : enemys)
-	{
-		enemy->Updata();
-	}
-	printf("\n");
-
-	enemys.clear();
 
 	system("pause");
 
