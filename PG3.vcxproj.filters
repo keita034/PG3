@@ -13,10 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\UserData">
+      <UniqueIdentifier>{62dd2d44-9ce4-408b-9eab-0c1721d0de87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UserData">
+      <UniqueIdentifier>{da5c2497-e359-48c2-8d81-4340470c55f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\TaskData">
+      <UniqueIdentifier>{9ac6d600-4208-4c56-9678-de652f36b5a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\TaskData">
+      <UniqueIdentifier>{061c4c56-035e-498b-8fb8-aece328e5ac0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Constant.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="UserDataControl.cpp">
+      <Filter>ソース ファイル\UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="UserDataList.cpp">
+      <Filter>ソース ファイル\UserData</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskDataControl.cpp">
+      <Filter>ソース ファイル\TaskData</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskDataList.cpp">
+      <Filter>ソース ファイル\TaskData</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseDataControl.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Constant.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="UserDataControl.h">
+      <Filter>ヘッダー ファイル\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="UserDataList.h">
+      <Filter>ヘッダー ファイル\UserData</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskDataList.h">
+      <Filter>ヘッダー ファイル\TaskData</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskDataControl.h">
+      <Filter>ヘッダー ファイル\TaskData</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseDataControl.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

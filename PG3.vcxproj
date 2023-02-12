@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,7 +141,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseDataControl.cpp" />
+    <ClCompile Include="Constant.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TaskDataControl.cpp" />
+    <ClCompile Include="TaskDataList.cpp" />
+    <ClCompile Include="TaskManager.cpp" />
+    <ClCompile Include="UserDataControl.cpp" />
+    <ClCompile Include="UserDataList.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseDataControl.h" />
+    <ClInclude Include="Constant.h" />
+    <ClInclude Include="TaskDataControl.h" />
+    <ClInclude Include="TaskDataList.h" />
+    <ClInclude Include="TaskManager.h" />
+    <ClInclude Include="UserDataControl.h" />
+    <ClInclude Include="UserDataList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

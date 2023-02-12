@@ -1,68 +1,56 @@
 #include <stdio.h>
 #include<list>
 #include<vector>
+#include<iostream>
+#include<memory>
+
+#include"TaskManager.h"
+#include"UserDataList.h"
+#include"Constant.h"
+
 int main()
 {
-	//駅番号
-	int index = 1;
+	std::unique_ptr<TaskManager> taskManager;
+	taskManager = std::make_unique<TaskManager>();
 
-	std::list<const char*>yamanoteLine{
-		"Tokyo", "Kanda","Akihabara","Okachimachi","Ueno",
-		"Uguisudani","Nippori","Tabata","Komagome","Sugamo","Otsuka",
-		"Ikebukuro","Mejiro","Takadanobaba","Shin-Okubo","Shinjuku",
-		"Yoyogi","Harajuku","Shibuya","Ebisu","Meguro",
-		"Gotanda","Osaki","Shinagawa","Tamachi","Hamamatsucho",
-		"Shimbashi","Yurakucho"
-	};
+	UserDataList lis;
 
-	//一覧を表示
-	printf("1970年当時の山手線駅一覧(英語名)\n");
-	for (const char* station : yamanoteLine)
+	USERDATA data = {"simi","LE2B"};
+
+	lis.AddData(data);
+
+	//要素の操作の操作番号
+	int operationNum = 0;
+
+	while (true)
 	{
-		printf("JY%02d:%s\n", index,station);
-		index++;
-	}
-	printf("\n");
+		std::cout << "[タスク管理ソフト]" << std::endl;
+		std::cout << "1.タスク" << std::endl;
+		std::cout << "2.担当者" << std::endl;
+		std::cout << "3.表示" << std::endl;
 
-	//日暮里の前に西日暮里を追加
-	for (std::list<const char*>::iterator itr = yamanoteLine.begin(); itr != yamanoteLine.end(); ++itr)
-	{
-		if (*itr == "Nippori")
+		std::cout << "----------------------------------" << std::endl;
+		std::cout << "操作したい種類を選択してください" << std::endl;
+
+		std::cout << std::endl;
+
+		std::cin >> operationNum;
+
+		system("cls");
+
+		switch (operationNum)
 		{
-			itr = yamanoteLine.insert(itr, "Nishi-Nippori");
-
+		case 1:
+		case 2:
+			taskManager->Operation(operationNum);
+			break;
+		case 3:
+			taskManager->DrawOperation();
+				break;
+		default:
 			break;
 		}
-	}
 
-	//一覧を表示
-	index = 1;
-	printf("2019年当時の山手線駅一覧(英語名)\n");
-	for (const char* station : yamanoteLine)
-	{
-		printf("JY%02d:%s\n", index, station);
-		index++;
-	}
-	printf("\n");
-
-	//品川の前に高輪ゲートウェイを追加
-	for (std::list<const char*>::iterator itr = yamanoteLine.begin(); itr != yamanoteLine.end(); ++itr)
-	{
-		if (*itr == "Shinagawa")
-		{
-			itr = yamanoteLine.insert(itr, "Takanawa Gateway");
-
-			break;
-		}
-	}
-
-	//一覧を表示
-	index = 1;
-	printf("2022年当時の山手線駅一覧(英語名)\n");
-	for (const char* station : yamanoteLine)
-	{
-		printf("JY%02d:%s\n", index, station);
-		index++;
 	}
 
 	return 0;
